@@ -1,10 +1,10 @@
 # inherit common device tree
 -include device/oppo/msm8974-common/BoardConfigCommon.mk
 
-LOCAL_PATH := device/oppo/find7op
+LOCAL_PATH := device/oneplus/bacon
 
 TARGET_NO_BOOTLOADER := true
-TARGET_BOOTLOADER_BOARD_NAME := find7op
+TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 TARGET_OTA_ASSERT_DEVICE := bacon,A0001
 
 # Partition info
@@ -22,5 +22,5 @@ BOARD_NFC_CHIPSET := pn547
 
 # Recovery:Start
 
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/configs/fstab.find7op
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/configs/fstab.bacon
 RECOVERY_SDCARD_ON_DATA := true
