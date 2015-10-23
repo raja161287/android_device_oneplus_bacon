@@ -1,4 +1,5 @@
-# Copyright (C) 2010 The Android Open Source Project
+# Copyright (C) 2015 The Android Open Source Project 
+#    & The Exodus Android
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,36 +24,39 @@
 # $(call inherit-product, device/sample/products/backup_overlay.mk)
 
 # Get the prebuilt list of APNs
-$(call inherit-product, vendor/omni/config/gsm.mk)
+$(call inherit-product, vendor/exodus/config/gsm.mk)
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# must be before including omni part
+# must be before including exodus part
 TARGET_BOOTANIMATION_SIZE := 1080x720
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/exodus/config/common.mk)
 
 # Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/oppo/find7op/device.mk)
+$(call inherit-product, device/oppo/exodus/device.mk)
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := omni_find7op
-PRODUCT_DEVICE := find7op
+PRODUCT_NAME := exodus_exodus
+PRODUCT_DEVICE := exodus
 PRODUCT_BRAND := OnePlus
 PRODUCT_MODEL := A0001
 PRODUCT_MANUFACTURER := OnePlus
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_PRODUCT=FIND7OP \
+    BUILD_PRODUCT=exodus \
     TARGET_DEVICE=A0001 \
     BUILD_FINGERPRINT="4.3/JLS36C/1390465867:user/release-keys" \
     PRIVATE_BUILD_DESC="msm8974-user 4.3 JLS36C eng.root.20140510.152835 release-keys"
 
 # Inline kernel
-TARGET_KERNEL_SOURCE := kernel/oppo/msm8974
-TARGET_KERNEL_CONFIG := msm8974_find7op_defconfig
+TARGET_KERNEL_SOURCE := kernel/oneplus/msm8974
+TARGET_KERNEL_CONFIG := msm8974_exodus_defconfig
+BOARD_KERNEL_IMAGE_NAME := zImage-dtb
+KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
 
 # Inherit from proprietary blobs
 $(call inherit-product, vendor/oppo/find7a/find7a-vendor.mk)
